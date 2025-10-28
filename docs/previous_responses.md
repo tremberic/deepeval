@@ -192,6 +192,14 @@ If you want to bootstrap evaluation datasets from documentation or logs:
 
 ---
 
+# Running DeepEval on Azure resources outside Databricks
+
+- DeepEval is distributed as a standard Python package (`pip install -U deepeval`) and only requires Python 3.9 or later, so you can install it on any Azure-hosted compute such as Azure VMs, Azure Container Apps, or Azure Machine Learning compute clusters in exactly the same way you would on a local machine. 【F:README.md†L140-L200】
+- The framework runs locally and can drive evaluations with whichever LLM endpoints you configure, including Azure OpenAI; you can point DeepEval’s metrics at your Azure OpenAI deployments via the CLI or Python SDK helpers without needing Databricks. 【F:README.md†L73-L101】【F:docs/static/llms-full.txt†L7906-L7963】
+- Choosing between Databricks and standalone Azure services usually comes down to operational convenience versus cost control: Databricks adds managed Spark, notebooks, and job orchestration, whereas running on general Azure compute means you manage the runtime yourself but only pay for the underlying VM/container usage. (This trade-off is based on how Azure services are priced and orchestrated; select the option that matches your team’s existing tooling and budget oversight.)
+
+---
+
 ### Putting it all together on Azure
 
 1. **Provision** Azure OpenAI + Databricks.
